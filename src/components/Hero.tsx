@@ -1,10 +1,49 @@
 import { motion } from "framer-motion";
 import { Linkedin, Mail, Download } from "lucide-react";
-import rajProf from "../../assets/rajprof.jpg";
+import rajProf from "../../assets/raj_prof.png";
 import resumePDF from "../../assets/Raj_Resume.pdf";
 import { LuGithub } from "react-icons/lu";
+import { useState, useEffect } from "react";
 
 const Hero = () => {
+  const roles = [
+    "Full Stack Web Developer",
+    "Android App Developer",
+    "AI/ML Developer",
+  ];
+
+  const [currentRoleIndex, setCurrentRoleIndex] = useState(0);
+  const [displayedText, setDisplayedText] = useState("");
+  const [isTyping, setIsTyping] = useState(true);
+
+  useEffect(() => {
+    const currentRole = roles[currentRoleIndex];
+
+    if (isTyping) {
+      if (displayedText.length < currentRole.length) {
+        const timeout = setTimeout(() => {
+          setDisplayedText(currentRole.slice(0, displayedText.length + 1));
+        }, 100);
+        return () => clearTimeout(timeout);
+      } else {
+        const timeout = setTimeout(() => {
+          setIsTyping(false);
+        }, 2000);
+        return () => clearTimeout(timeout);
+      }
+    } else {
+      if (displayedText.length > 0) {
+        const timeout = setTimeout(() => {
+          setDisplayedText(displayedText.slice(0, -1));
+        }, 50);
+        return () => clearTimeout(timeout);
+      } else {
+        setCurrentRoleIndex((prev) => (prev + 1) % roles.length);
+        setIsTyping(true);
+      }
+    }
+  }, [displayedText, isTyping, currentRoleIndex, roles]);
+
   const socialLinks = [
     {
       icon: LuGithub,
@@ -97,30 +136,33 @@ const Hero = () => {
           animate="visible"
         >
           {/* Profile Image */}
-          <motion.div className="mb-8" variants={itemVariants}>
+          <motion.div className="mb-10" variants={itemVariants}>
             <motion.div
-              className="relative mx-auto w-32 h-32 md:w-40 md:h-40"
+              className="relative mx-auto w-32 h-32 md:w-40 md:h-40 lg:w-48 lg:h-48"
               variants={pulseVariants}
               animate="animate"
             >
               <motion.img
                 src={rajProf}
                 alt="Profile"
-                className="w-full h-full rounded-full object-cover shadow-lg border-4 border-white dark:border-dark-700"
+                className="w-full h-full rounded-full object-cover object-center shadow-lg border-4 border-white dark:border-dark-700"
+                style={
+                  {
+                    imageRendering: "crisp-edges",
+                    WebkitImageRendering: "crisp-edges",
+                    objectPosition: "center 40%", // Adjust this to zoom into a specific part
+                    transform: "scale(1.2)", // Zoom the image content
+                  } as React.CSSProperties
+                }
                 whileHover={{ scale: 1.1 }}
                 transition={{ duration: 0.3 }}
-              />
-              <motion.div
-                className="absolute inset-0 rounded-full bg-gradient-to-tr from-primary-500/20 to-accent-500/20"
-                animate={{ rotate: 360 }}
-                transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
               />
             </motion.div>
           </motion.div>
 
           {/* Main Content */}
           <motion.div className="space-y-6" variants={itemVariants}>
-            <motion.div className="space-y-2" variants={itemVariants}>
+            <motion.div className="space-y-1" variants={itemVariants}>
               <motion.p
                 className="text-primary-600 dark:text-primary-400 font-medium text-lg md:text-xl"
                 initial={{ opacity: 0, x: -20 }}
@@ -146,12 +188,19 @@ const Hero = () => {
                 </motion.span>
               </motion.h1>
               <motion.p
-                className="text-xl md:text-2xl lg:text-3xl text-neutral-600 dark:text-neutral-300 font-light"
+                className="text-xl md:text-2xl lg:text-3xl text-neutral-600 dark:text-neutral-300 font-light min-h-[2.5rem] flex items-center justify-center"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 1.2, duration: 0.6 }}
               >
-                Full Stack App & Web Developer
+                <span className="relative">
+                  {displayedText}
+                  <motion.span
+                    className="inline-block w-0.5 h-6 bg-primary-600 dark:bg-primary-400 ml-1"
+                    animate={{ opacity: [1, 0, 1] }}
+                    transition={{ duration: 1, repeat: Infinity }}
+                  />
+                </span>
               </motion.p>
             </motion.div>
 
