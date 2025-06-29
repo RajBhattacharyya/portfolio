@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Linkedin, Mail, Download, ArrowDown } from "lucide-react";
+import { Linkedin, Mail, Download } from "lucide-react";
 import rajProf from "../../assets/rajprof.jpg";
 import resumePDF from "../../assets/Raj_Resume.pdf";
 import { LuGithub } from "react-icons/lu";
@@ -217,23 +217,6 @@ const Hero = () => {
                 </motion.a>
               ))}
             </motion.div>
-          </motion.div>
-        </motion.div>
-
-        {/* Scroll Indicator */}
-        <motion.div
-          className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 2, duration: 0.6 }}
-        >
-          <motion.div
-            className="flex flex-col items-center text-neutral-400 dark:text-neutral-500"
-            animate={{ y: [0, 10, 0] }}
-            transition={{ duration: 2, repeat: Infinity }}
-          >
-            <span className="text-sm mb-2">Scroll down</span>
-            <ArrowDown size={20} />
           </motion.div>
         </motion.div>
       </div>
