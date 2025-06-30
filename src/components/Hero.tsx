@@ -179,6 +179,9 @@ const Hero = () => {
               >
                 <motion.span
                   className="bg-gradient-to-r from-primary-600 to-accent-600 dark:from-primary-400 dark:to-accent-400 bg-clip-text text-transparent"
+                  style={{
+                    fontFamily: "'Dancing Script', 'Brush Script MT', cursive",
+                  }}
                   animate={{
                     backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
                   }}
