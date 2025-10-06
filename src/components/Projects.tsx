@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { LuGithub } from "react-icons/lu";
+import Workflow from "../../assets/workflow.png";
 import MindfulPals from "../../assets/mindfulpals.png";
 import FitFusionAI from "../../assets/fitfusionai.png";
 import FitFitWatch from "../../assets/fitfitwatch.png";
@@ -10,8 +11,7 @@ const Projects = () => {
       title: "Git-workflow-optimisation",
       description:
         "An AI-driven GitHub Workflow Optimizer automatically detects inefficiencies, reduces CPU/GPU usage, and optimizes resource consumption—saving time, money, and the environment.",
-      image:
-        "https://github.com/RajBhattacharyya/git-workflow-optimisation/raw/master/home.png",
+      image: Workflow,
       technologies: [
         "React",
         "Node.js",
