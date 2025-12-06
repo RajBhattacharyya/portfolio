@@ -49,7 +49,7 @@ const Projects = () => {
       description:
         "innovative application harnesses the power of artificial intelligence and blockchain technology to deliver real-time health checkups and secure data management, all from the convenience of your smartwatch. Our app ensures a seamless and interactive experience",
       image: FitFitWatch,
-      technologies: ["Flutter","Dart", "Firebase", "Polygon", "Google Maps API", "REST API", "ESP32"],
+      technologies: ["Flutter", "Dart", "Firebase", "Polygon", "Google Maps API", "REST API", "ESP32"],
       githubUrl: "https://github.com/RajBhattacharyya/Fit_Fit_watch",
       featured: false,
     },
@@ -135,9 +135,8 @@ const Projects = () => {
             <motion.div
               key={index}
               variants={itemVariants}
-              className={`grid grid-cols-1 lg:grid-cols-2 gap-12 items-center ${
-                index % 2 === 1 ? "lg:flex-row-reverse" : ""
-              }`}
+              className={`grid grid-cols-1 lg:grid-cols-2 gap-12 items-center ${index % 2 === 1 ? "lg:flex-row-reverse" : ""
+                }`}
             >
               <motion.div
                 className={index % 2 === 1 ? "lg:order-2" : ""}
@@ -161,6 +160,7 @@ const Projects = () => {
                     <div className="flex space-x-4">
                       <motion.a
                         href={project.githubUrl}
+                        aria-label="View project on GitHub"
                         className="bg-white/90 text-neutral-900 p-3 rounded-full hover:bg-white transition-colors"
                         whileHover={{ scale: 1.1 }}
                         whileTap={{ scale: 0.9 }}
@@ -267,6 +267,7 @@ const Projects = () => {
                     <div className="flex space-x-3">
                       <motion.a
                         href={project.githubUrl}
+                        aria-label="View project on GitHub"
                         className="bg-white/90 text-neutral-900 p-2 rounded-full hover:bg-white transition-colors"
                         whileHover={{ scale: 1.1 }}
                         whileTap={{ scale: 0.9 }}

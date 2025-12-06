@@ -74,11 +74,10 @@ const Header = () => {
   return (
     <motion.header
       {...headerVariants}
-      className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-        isScrolled
+      className={`fixed top-0 w-full z-50 transition-all duration-300 ${isScrolled
           ? "bg-white/90 dark:bg-dark-900/90 backdrop-blur-md shadow-sm border-b border-neutral-200 dark:border-dark-700"
           : "bg-transparent"
-      }`}
+        }`}
     >
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
@@ -125,6 +124,7 @@ const Header = () => {
             {/* Theme Toggle */}
             <motion.button
               onClick={toggleTheme}
+              aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
               className="p-2 rounded-lg bg-neutral-100 dark:bg-dark-800 text-neutral-700 dark:text-neutral-300 hover:bg-neutral-200 dark:hover:bg-dark-700 transition-colors"
               whileHover={{ scale: 1.1, rotate: 180 }}
               whileTap={{ scale: 0.9 }}
@@ -162,6 +162,7 @@ const Header = () => {
           <div className="md:hidden flex items-center space-x-4">
             <motion.button
               onClick={toggleTheme}
+              aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
               className="p-2 rounded-lg bg-neutral-100 dark:bg-dark-800 text-neutral-700 dark:text-neutral-300"
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
